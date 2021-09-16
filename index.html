@@ -17,13 +17,14 @@
   <p id="userId"><b>userId:</b> </p>
   <p id="displayName"><b>displayName:</b> </p>
   <p id="statusMessage"><b>statusMessage:</b> </p>
-
   <p id="decodedIDToken"><b>email:</b> </p>
+
   <p id="type"><b>type:</b> </p>
   <p id="viewType"><b>viewType:</b> </p>
   <p id="utouId"><b>utouId:</b> </p>
   <p id="roomId"><b>roomId:</b> </p>
   <p id="groupId"><b>groupId:</b> </p>
+
   <p id="friendship"><b>isFriendship:</b> </p>
   <p id="scanCode"><b>Code:</b> </p>
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
@@ -71,15 +72,20 @@
     }
 
     function getContext() {
+      document.getElementById("type").append(liff.getContext().type);//จะเป็นการบอกว่าเราคุย 1-1 หรือ กลุ่ม หรือ webbrowse
+      document.getElementById("viewType").append(liff.getContext().viewType);//viewType จะเป็นการเลือกว่าเป็น view แบบไหน compact tall full
+      document.getElementById("utouId").append(liff.getContext().utouId);//utouId จะแสดงค่าไอดีของที่เราเปิด liff แบบ 1-1 ถ้าคุยรูปแบบอื่นจะไม่โผล่
+      document.getElementById("roomId").append(liff.getContext().roomId);//roomID กรณีที่ลากเพื่อนมาแล้วโพส link ของ liff ไป จะบอกค่า roomID คืออะไร
+      document.getElementById("groupId").append(liff.getContext().groupID);
     }
 
     async function getUserProfile() {
       const profile = await liff.getProfile();
       document.getElementById("pictureUrl").src = profile.pictureUrl;
       document.getElementById("userId").append(profile.userId);
-      document.getElementById("statusMessage").append(profile.statusMessage);
-      document.getElementById("displayName").append(profile.displayName);
-      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+      document.getElementById("statusMessage").append(profile.statusMessage);//get status ของไลน์
+      document.getElementById("displayName").append(profile.displayName);//get ชื่อ line
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email);
     }
 
     function getEnvironment() {
@@ -101,7 +107,7 @@
       await liff.init({ liffId: "1656434021-V1okZj13" })
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
