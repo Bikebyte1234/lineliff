@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
   <title>My LIFF app</title>
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
+
 <body>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
@@ -26,7 +28,9 @@
   <p id="groupId"><b>groupId:</b> </p>
 
   <p id="friendship"><b>isFriendship:</b> </p>
+
   <p id="scanCode"><b>Code:</b> </p>
+
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
@@ -61,8 +65,8 @@
     }
 
     async function scanCode() {
-      //const result = await liff.scanCode()
-      //document.getElementById("scanCode").append(result.value)
+      const result = await liff.scanCode()
+      document.getElementById("scanCode").append(result.value)
     }
 
     function openWindow() {
@@ -76,7 +80,7 @@
     }
 
     async function sendMsg() {
-      /*if(liff.getContext().type !== "none"){
+      if (liff.getContext().type !== "none") {
         await liff.sendMessages([
           {
             "type": "sticker",
@@ -86,7 +90,7 @@
         ])
         alert("Message sent")
 
-      }*/
+      }
     }
 
     function getContext() {
@@ -112,9 +116,9 @@
       document.getElementById("version").append(liff.getVersion());//liff.getVersion() ดู Version ของ liff ที่เราใช้งาน
       document.getElementById("accessToken").append(liff.getAccessToken());//เป็นค่าที่เอาไว้ทำ backend หรือเกี่ยวข้องกับ security
       document.getElementById("isInClient").append(liff.isInClient());//เป็นการเช็คว่าเปิดจาก WebBrowser หรือ AppicationLine จะ return เป็น true false สามารถ ปิด feature บาง feature ได้
-      if(liff.isInClient()){
+      if (liff.isInClient()) {
         document.getElementById("btnLogOut").style.display = "none";
-      }else{
+      } else {
         document.getElementById("btnMsg").style.display = "none";
         document.getElementById("btnScanCode").style.display = "none";
         document.getElementById("btnClose").style.display = "none";
@@ -123,13 +127,17 @@
 
     async function main() {
       await liff.init({ liffId: "1656434021-V1okZj13" })
-      getEnvironment()
-      getUserProfile()
-      getContext()
-      // getFriendship()
-      // createUniversalLink()
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      if (liff.isLoggedIn()) {
+        getEnvironment()
+        getUserProfile()
+        getContext()
+        getFriendship()
+        createUniversalLink()
+      }
     }
     main()
   </script>
 </body>
+
 </html>
