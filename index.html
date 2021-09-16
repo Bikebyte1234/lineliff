@@ -77,6 +77,9 @@
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS()) //liff.getOS() จะทำให้รู้ว่า liff ที่เปิดอยู่เป็น andriod ios PC
       document.getElementById("language").append(liff.getLanguage())//liff.getLanguage() จะทำให้รู้ว่าที่เค้าใช้อยู่เป็นภาษาอะไร
+      document.getElementById("version").append(liff.getVersion())//liff.getVersion() ดู Version ของ liff ที่เราใช้งาน
+      document.getElementById("accessToken").append(liff.getAccessToken())//เป็นค่าที่เอาไว้ทำ backend หรือเกี่ยวข้องกับ security
+
     }
 
     async function main() {
