@@ -49,8 +49,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!--<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>-->
-  <script src="https://static.line-scdn.net/liff/edge/2.1/liff.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
     function createUniversalLink() {
     }
@@ -75,11 +74,13 @@
 
     async function scanCode() {
       alert("test");
-      if (liff.scanCode) {
+      liff.scanCode()
+      /*if (liff.scanCode) {
         liff.scanCode().then(result => {
           // result = { value: '' }
         });
-      }
+      }*/
+      //const result = await liff.scanCode()
       //document.getElementById("scanCode").append(result.value)
     }
 
