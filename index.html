@@ -12,6 +12,7 @@
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
+  <p id="lineversion"><b>LineVersion:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
   <p id="accessToken"><b>AccessToken:</b> </p>
 
@@ -129,6 +130,7 @@
       document.getElementById("os").append(liff.getOS()); //liff.getOS() จะทำให้รู้ว่า liff ที่เปิดอยู่เป็น andriod ios PC
       document.getElementById("language").append(liff.getLanguage());//liff.getLanguage() จะทำให้รู้ว่าที่เค้าใช้อยู่เป็นภาษาอะไร
       document.getElementById("version").append(liff.getVersion());//liff.getVersion() ดู Version ของ liff ที่เราใช้งาน
+      document.getElementById("lineversion").append(liff.getLineVersion());
       document.getElementById("accessToken").append(liff.getAccessToken());//เป็นค่าที่เอาไว้ทำ backend หรือเกี่ยวข้องกับ security
       document.getElementById("isInClient").append(liff.isInClient());//เป็นการเช็คว่าเปิดจาก WebBrowser หรือ AppicationLine จะ return เป็น true false สามารถ ปิด feature บาง feature ได้
       if (liff.isInClient()) {
